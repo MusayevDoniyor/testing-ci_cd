@@ -10,7 +10,6 @@ describe("Hello Coder", () => {
     expect(response.body.message).toBe("Hello World, Coder!");
   });
 });
-
 describe("Calculate sum", () => {
   it("Returns sum of two numbers", async () => {
     const body = { a: 5, b: 7 };

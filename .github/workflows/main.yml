@@ -1,0 +1,32 @@
+name: CI/CD Testing
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Kodni klonlash
+        uses: actions/checkout@v3
+
+      - name: Node.js o'rnatish
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+          cache: "pnpm"
+
+      - name: PNPM o'rnatish
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Dependenciyalarni o'rnatih
+        run: pnpm i
+
+      - name: Testlarni ishga tushirish
+        run: pnpm run jest
